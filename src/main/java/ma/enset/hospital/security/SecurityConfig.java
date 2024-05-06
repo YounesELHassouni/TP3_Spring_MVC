@@ -35,9 +35,9 @@ public class SecurityConfig {
         httpSecurity
                 .formLogin(Customizer.withDefaults())
                 .authorizeHttpRequests(ar->ar.requestMatchers("/login").rememberMe())
-                //.authorizeHttpRequests(ar->ar.requestMatchers("/deletePatient/**").hasRole("ADMIN"))
-                //.authorizeHttpRequests(ar->ar.requestMatchers("/admin/**").hasRole("ADMIN"))
-                //.authorizeHttpRequests(ar->ar.requestMatchers("/user/**").hasRole("USER"))
+                .authorizeHttpRequests(ar->ar.requestMatchers("/deletePatient/**").hasRole("ADMIN"))
+                .authorizeHttpRequests(ar->ar.requestMatchers("/admin/**").hasRole("ADMIN"))
+                .authorizeHttpRequests(ar->ar.requestMatchers("/user/**").hasRole("USER"))
                 .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
                 .exceptionHandling(eh->eh.accessDeniedPage("/notAuthorized"));
         return httpSecurity.build();
